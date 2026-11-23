@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="광운대학교 수학과 2학년 이의주의 개인 홈페이지입니다.">
+    <title>이의주 | Mathematics Portfolio</title>
+    <style>
+        :root {
+            --paper: #f5f3ed;
+            --ink: #202b35;
+            --muted: #68747b;
+            --green: #557b68;
+            --green-dark: #365746;
+            --line: #d9ded6;
+            --card: #fffefa;
+            --soft: #e9eee7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        .main {
+            min-height: 100vh;
+            padding: 48px 24px 36px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container { width: min(100%, 980px); }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+        }
+
+        .topbar .mark { color: var(--green-dark); }
+
+        .hero {
+            padding: clamp(58px, 10vw, 108px) 0 64px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 30px;
+        }
+
+        .eyebrow {
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2.4px;
+            margin-bottom: 22px;
+        }
+
+        .name {
+            font-size: clamp(56px, 10vw, 88px);
+            line-height: 1.08;
+            letter-spacing: -5px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .english-name {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .year-stamp {
+            width: 112px;
+            height: 112px;
+            border: 1px solid #b8c8bb;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            transform: rotate(8deg);
+            flex-shrink: 0;
+        }
+
+        .year-stamp strong { font-size: 30px; line-height: 1; }
+        .year-stamp span { font-size: 10px; letter-spacing: 1.5px; margin-top: 7px; }
+
+        .intro-panel {
+            background: var(--green-dark);
+            color: #f7f7f0;
+            border-radius: 5px;
+            padding: clamp(28px, 5vw, 48px);
+            display: grid;
+            grid-template-columns: minmax(150px, 0.7fr) 1.6fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        .intro-heading {
+            font-size: clamp(23px, 4vw, 30px);
+            line-height: 1.45;
+            letter-spacing: -1px;
+        }
+
+        .intro-heading span {
+            display: block;
+            color: #c6d7c8;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .intro {
+            color: #e1e9df;
+            font-size: 15px;
+            line-height: 2;
+            word-break: keep-all;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin: 58px 0 20px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-head h2 { font-size: 21px; letter-spacing: -0.7px; }
+        .section-head span { color: var(--muted); font-size: 11px; letter-spacing: 1.7px; }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            padding: 23px 20px 25px;
+            min-height: 158px;
+            transition: transform .2s ease, border-color .2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #9caf9f;
+        }
+
+        .card .number {
+            display: block;
+            color: #91a597;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            color: var(--green-dark);
+            font-size: 16px;
+            margin-bottom: 11px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            color: #89918c;
+            font-size: 11px;
+            letter-spacing: .5px;
+        }
+
+        @media (max-width: 760px) {
+            .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .intro-panel { grid-template-columns: 1fr; gap: 22px; }
+        }
+
+        @media (max-width: 480px) {
+            .main { padding: 28px 18px; }
+            .topbar { font-size: 10px; letter-spacing: 1px; }
+            .hero { padding: 64px 0 48px; }
+            .name { letter-spacing: -3px; }
+            .year-stamp { width: 76px; height: 76px; }
+            .year-stamp strong { font-size: 23px; }
+            .year-stamp span { font-size: 8px; }
+            .cards { grid-template-columns: 1fr; }
+            .section-head { margin-top: 44px; }
+            footer { flex-direction: column; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card { transition: none; }
+            .card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <header class="topbar">
+                <span class="mark">LEE UIJOO</span>
+                <span>PERSONAL PROFILE · 2026</span>
+            </header>
+
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">KWANGWOON UNIVERSITY / MATHEMATICS</p>
+                    <h1 class="name">이의주</h1>
+                    <p class="english-name">LEE UIJOO</p>
+                </div>
+                <div class="year-stamp" aria-label="2학년">
+                    <strong>02</strong>
+                    <span>SECOND YEAR</span>
+                </div>
+            </section>
+
+            <section class="intro-panel" aria-label="자기소개">
+                <h2 class="intro-heading">
+                    <span>ABOUT ME</span>
+                    수학으로 생각하고<br>배움으로 확장하다.
+                </h2>
+                <p class="intro">
+                    안녕하세요. 광운대학교 수학과 2학년에 재학 중인 이의주입니다.<br><br>
+                    수학의 다양한 개념과 원리를 배우며 논리적으로 사고하고,
+                    복잡한 문제를 단계적으로 해결하는 과정에 흥미를 느끼고 있습니다.
+                    전공 수업을 통해 수학적 기초를 탄탄히 다지는 동시에,
+                    통계학과 수치해석 등 수학이 실제 문제에 활용되는 분야에도 관심을 가지고 있습니다.<br><br>
+                    새로운 지식을 꾸준히 배우고 직접 고민하며 이해하는 것을 중요하게 생각합니다.
+                    앞으로도 수학적 사고력을 넓히고, 배운 내용을 다양한 분야와 연결해 나가고 싶습니다.
+                </p>
+            </section>
+
+            <section aria-label="관심 분야">
+                <div class="section-head">
+                    <h2>관심 분야</h2>
+                    <span>AREAS OF INTEREST</span>
+                </div>
+                <div class="cards">
+                    <article class="card">
+                        <span class="number">01 / THINK</span>
+                        <h3>Mathematics</h3>
+                        <p>수학적 사고<br>논리와 문제 해결</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">02 / ANALYZE</span>
+                        <h3>Statistics</h3>
+                        <p>확률과 통계<br>데이터의 이해와 분석</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">03 / COMPUTE</span>
+                        <h3>Numerical Analysis</h3>
+                        <p>수치해석<br>계산과 근사 방법</p>
+                    </article>
+                    <article class="card">
+                        <span class="number">04 / EXPLORE</span>
+                        <h3>Interests</h3>
+                        <p>수학과 컴퓨터의 연계<br>새로운 분야에 대한 탐구</p>
+                    </article>
+                </div>
+            </section>
+
+            <footer>
+                <span>© 2026 LEE UIJOO</span>
+                <span>KWANGWOON UNIVERSITY · DEPARTMENT OF MATHEMATICS</span>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
